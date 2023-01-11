@@ -1,24 +1,20 @@
-export interface ICoinInfo {
-  __typename: string;
+export type ICoinInfo = {
   Id: string;
   FullName: string;
   ImageUrl: string;
   Name: string;
-}
-export interface IUSD {
-  __typename: string;
+};
+export type IUSD = {
   PRICE: string;
   OPENDAY: string;
   HIGHDAY: string;
   LOWDAY: string;
   OPEN24HOUR: string;
-}
-export interface IDisplay {
-  __typename: string;
+};
+export type IDisplay = {
   USD: IUSD;
-}
-export interface ICoin {
-  __typename: string;
+};
+export type ICoin = {
   CoinInfo: ICoinInfo;
   DISPLAY: IDisplay;
-}
+};

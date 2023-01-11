@@ -1,4 +1,4 @@
-import CoinList from "./components/CoinList";
+import CoinList from "./components/Coin/CoinList";
 import "./App.css";
 
 function App() {

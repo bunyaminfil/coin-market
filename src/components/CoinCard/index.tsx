@@ -1,9 +1,10 @@
-interface IProps {
-  coinInfo: any;
+import { ICoinInfo } from "../../entities/coin";
+interface ICoinProps {
+  coinInfo: ICoinInfo;
   price: string;
 }
 
-const CoinCard = ({ coinInfo, price }: IProps) => {
+const CoinCard = ({ coinInfo, price }: ICoinProps) => {
   return (
     <div className="bg-gray-700 rounded-md h-20 mx-96 my-16">
       <div className="w-full flex p-2 items-center">

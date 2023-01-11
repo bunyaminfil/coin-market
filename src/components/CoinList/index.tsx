@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import CoinCard from "../CoinCard";
 import Loading from "../Loading";
+import { ICoin } from "../../entities/coin";
 
 const FETCH_COIN_LIST = gql`
   query FetchCoinsList {
@@ -35,7 +36,7 @@ const CoinList = () => {
           <Loading />
         </div>
       ) : (
-        data.coinsList.Data.map((data: any) => (
+        data.coinsList.Data.map((data: ICoin) => (
           <CoinCard
             key={data.CoinInfo.Id}
             coinInfo={data.CoinInfo}

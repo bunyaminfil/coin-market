@@ -1,27 +1,31 @@
-import { ICoinInfo } from "../../entities/coin";
-interface ICoinProps {
+import { ICoinInfo, IUSD } from "../../entities/coin";
+interface ICoinCardProps {
   coinInfo: ICoinInfo;
-  price: string;
+  display: IUSD;
 }
 
-const CoinCard = ({ coinInfo, price }: ICoinProps) => {
+const CoinCard = ({ coinInfo, display }: ICoinCardProps) => {
   return (
-    <div className="bg-gray-700 rounded-md h-20 mx-96 my-16">
-      <div className="w-full flex p-2 items-center">
-        <div className="w-1/6">
+    <tbody>
+      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th
+          scope="row"
+          className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
           <img
             src={"https://www.cryptocompare.com" + coinInfo.ImageUrl}
+            alt="icon"
             className="w-16 h-16"
           />
-        </div>
-        <div className="w-3/6">
-          <h1 className="text-slate-50 text-5xl">{coinInfo.FullName}</h1>
-        </div>
-        <div className="w-2/6">
-          <h1 className="text-slate-50 text-3xl">{price}</h1>
-        </div>
-      </div>
-    </div>
+          {coinInfo.FullName}
+        </th>
+        <td className="px-6 py-4">{display.OPENDAY}</td>
+        <td className="px-6 py-4">{display.OPEN24HOUR}</td>
+        <td className="px-6 py-4">{display.LOWDAY}</td>
+        <td className="px-6 py-4">{display.HIGHDAY}</td>
+        <td className="px-6 py-4">{display.PRICE}</td>
+      </tr>
+    </tbody>
   );
 };
 

@@ -1,50 +1,52 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { FETCH_COIN_LIST } from "../../lib/queries";
 import CoinCard from "../CoinCard";
 import Loading from "../Loading";
 import { ICoin } from "../../entities/coin";
 
-const FETCH_COIN_LIST = gql`
-  query FetchCoinsList {
-    coinsList
-      @rest(type: "ListPayload", path: "/data/top/totalvolfull?tsym=USD") {
-      Data @type(name: "DataPayload") {
-        CoinInfo @type(name: "CoinInfoPayload") {
-          Id
-          Name
-          FullName
-          ImageUrl
-        }
-        DISPLAY @type(name: "DisplayPayload") {
-          USD @type(name: "USDPayLoad") {
-            PRICE
-            OPENDAY
-            HIGHDAY
-            LOWDAY
-            OPEN24HOUR
-          }
-        }
-      }
-    }
-  }
-`;
 const CoinList = () => {
   const { loading, error, data } = useQuery(FETCH_COIN_LIST);
+  if (error) return <div>failed to load!</div>;
+  if (loading)
+    return (
+      <div className="m-24">
+        <Loading />
+      </div>
+    );
   return (
-    <>
-      {loading ? (
-        <div className="m-24">
-          <Loading />
-        </div>
-      ) : (
-        data.coinsList.Data.map((data: ICoin) => (
+    <div className="relative overflow-x-auto">
+      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" className="px-6 py-3">
+              COIN NAME
+            </th>
+            <th scope="col" className="px-6 py-3">
+              OPENDAY
+            </th>
+            <th scope="col" className="px-6 py-3">
+              OPEN24HOUR
+            </th>
+            <th scope="col" className="px-6 py-3">
+              LOWDAY
+            </th>
+            <th scope="col" className="px-6 py-3">
+              HIGHDAY
+            </th>
+            <th scope="col" className="px-6 py-3">
+              PRICE
+            </th>
+          </tr>
+        </thead>
+        {data.coinsList.Data.map((data: ICoin) => (
           <CoinCard
             key={data.CoinInfo.Id}
             coinInfo={data.CoinInfo}
-            price={data.DISPLAY.USD.PRICE}
+            display={data.DISPLAY.USD}
           />
-        ))
-      )}
-    </>
+        ))}
+      </table>
+    </div>
   );
 };
 

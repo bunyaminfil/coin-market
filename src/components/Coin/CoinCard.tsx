@@ -13,7 +13,7 @@ function CoinCard(props: CoinCardProps) {
           <img
             src={`https://www.cryptocompare.com${coinInfo.ImageUrl}`}
             alt="icon"
-            className="w-16 h-16"
+            className="table__img w-16 h-16"
           />
           {coinInfo.FullName}
         </th>

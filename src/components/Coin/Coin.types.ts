@@ -1,20 +1,20 @@
-export type ICoinInfo = {
+export type CoinInfo = {
   Id: string;
   FullName: string;
   ImageUrl: string;
   Name: string;
 };
-export type IUSD = {
+export type USD = {
   PRICE: string;
   OPENDAY: string;
   HIGHDAY: string;
   LOWDAY: string;
   OPEN24HOUR: string;
 };
-export type IDisplay = {
-  USD: IUSD;
+export type Display = {
+  USD: USD;
 };
-export type ICoin = {
-  CoinInfo: ICoinInfo;
-  DISPLAY: IDisplay;
+export type Coin = {
+  CoinInfo: CoinInfo;
+  DISPLAY: Display;
 };

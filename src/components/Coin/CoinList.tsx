@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { FETCH_COIN_LIST } from "./coin.query";
-import CoinCard from "./CoinCard";
+import CoinRow from "./CoinRow";
 import Loading from "../Loading";
-import { type ICoin } from "./Coin.types";
+import { type Coin } from "./Coin.types";
 import "./coin.css";
 
 function CoinList() {
@@ -15,6 +15,7 @@ function CoinList() {
       </div>
     );
   }
+
   return (
     <div className="relative overflow-x-auto">
       <table className="table">
@@ -40,8 +41,8 @@ function CoinList() {
             </th>
           </tr>
         </thead>
-        {data.coinsList.Data.map((data: ICoin) => (
-          <CoinCard
+        {data.coinsList.Data.map((data: Coin) => (
+          <CoinRow
             key={data.CoinInfo.Id}
             coinInfo={data.CoinInfo}
             display={data.DISPLAY}

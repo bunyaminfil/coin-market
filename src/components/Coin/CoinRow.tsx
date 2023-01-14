@@ -1,10 +1,10 @@
-import { ICoinInfo, IDisplay } from "./Coin.types";
-type CoinCardProps = {
-  coinInfo: ICoinInfo;
-  display: IDisplay;
+import type { CoinInfo, Display } from "./Coin.types";
+type CoinRowProps = {
+  coinInfo: CoinInfo;
+  display: Display;
 };
 
-function CoinCard(props: CoinCardProps) {
+function CoinRow(props: CoinRowProps) {
   const { coinInfo, display } = props;
   return (
     <tbody>
@@ -27,4 +27,4 @@ function CoinCard(props: CoinCardProps) {
   );
 }
 
-export default CoinCard;
+export default CoinRow;

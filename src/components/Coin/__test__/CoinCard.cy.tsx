@@ -1,4 +1,4 @@
-import CoinCard from "../CoinCard";
+import CoinCard from "../CoinRow";
 import { coinInfo, display } from "../__fixtures__/fixtures";
 import "tailwindcss/dist/tailwind.min.css";
 

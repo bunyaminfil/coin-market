@@ -1,4 +1,5 @@
 import type { CoinInfo, Display } from "./Coin.types";
+import "./coin.css";
 type CoinRowProps = {
   coinInfo: CoinInfo;
   display: Display;

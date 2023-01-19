@@ -1,3 +1,4 @@
+import React, { type ComponentProps } from 'react';
 import { useQuery } from "@apollo/client";
 import { FETCH_COIN_LIST } from "./coin.query";
 import CoinRow from "./CoinRow";
@@ -5,7 +6,9 @@ import Loading from "../Loading";
 import { type Coin } from "./Coin.types";
 import "./coin.css";
 
-function CoinList() {
+type CoinListProps = ComponentProps<"div">
+
+function CoinList(coinListProps: CoinListProps) {
   const { loading, error, data } = useQuery(FETCH_COIN_LIST);
   if (error) return <div>failed to load!</div>;
   if (loading) {
@@ -17,7 +20,10 @@ function CoinList() {
   }
 
   return (
-    <div className="relative overflow-x-auto">
+    <div
+      className="relative overflow-x-auto"
+      {...coinListProps}
+    >
       <table className="table">
         <thead className="table__head">
           <tr>

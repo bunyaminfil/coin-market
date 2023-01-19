@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CoinRow from "./CoinRow";
-import { coinInfo, display } from "./__fixtures__/fixtures";
+import CoinRow from "../CoinRow";
+import { coinInfo, display } from "../__fixtures__/fixtures";
 
 export default {
   component: CoinRow,
